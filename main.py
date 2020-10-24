@@ -15,6 +15,7 @@ stu_name = input()
 stu_id = input()
 dept_text = input()
 sc_url = input()
+token = input()
 
 
 def main():
@@ -106,6 +107,7 @@ def main():
             "customerAppTypeRuleId": customer_app_type_rule_id,
             "clockState": 0
         },
+        "token": token,
     }
 
     # 提交打卡与结果判定
