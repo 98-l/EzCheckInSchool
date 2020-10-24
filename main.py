@@ -54,19 +54,13 @@ def main():
     time_h = (time.localtime().tm_hour + 8) % 24
     time_m = time.localtime().tm_min
     time_s = time.localtime().tm_sec
-    if (time_h >= 6) & (time_h < 8):
-        template_id = "clockSign1"
-        customer_app_type_rule_id = 146
-    elif (time_h >= 12) & (time_h < 14):
+    if (time_h >= 11) & (time_h < 15):
         template_id = "clockSign2"
         customer_app_type_rule_id = 147
-    elif (time_h >= 21) & (time_h <= 22):
-        template_id = "clockSign3"
-        customer_app_type_rule_id = 148
     else:
         print("现在是%d点%d分，将打卡早间档测试" % (time_h, time_m))
         template_id = "clockSign1"
-        customer_app_type_rule_id = 146
+        customer_app_type_rule_id = 147
 
     # 随机温度(36.2~36.5)
     a = random.uniform(36.2, 36.5)
@@ -91,6 +85,7 @@ def main():
             "deptid": class_id,
             "source": "app",
             "templateid": template_id,
+            "token": token,
             "stuNo": stu_id,
             "username": stu_name,
             "userid": round(time.time()),
@@ -107,7 +102,7 @@ def main():
             "customerAppTypeRuleId": customer_app_type_rule_id,
             "clockState": 0
         },
-        "token": token,
+        "token": token
     }
 
     # 提交打卡与结果判定
